@@ -1291,6 +1291,9 @@ class CookieJar:
                     #   is a request to discard (old and new) cookie, though.
                     k = "expires"
                     v = self._now + v
+                if k == "path":
+                    if v is None:
+                        v = "/"
                 if (k in value_attrs) or (k in boolean_attrs):
                     if (v is None and
                         k not in ["port", "comment", "commenturl"]):
